@@ -47,7 +47,7 @@ class Section2 extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             color: kwhiteColor,
-            fontSize: 35,
+            fontSize: 27,
           ),
         ),
         khight,
