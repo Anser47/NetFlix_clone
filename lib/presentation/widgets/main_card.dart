@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:netflix_app/core/constants.dart';
 
 class MainCard2 extends StatelessWidget {
+  final String imgString;
   const MainCard2({
+    required this.imgString,
     super.key,
   });
 
@@ -14,10 +16,9 @@ class MainCard2 extends StatelessWidget {
       height: 250,
       decoration: BoxDecoration(
         borderRadius: kRadius10,
-        image: const DecorationImage(
+        image: DecorationImage(
           fit: BoxFit.cover,
-          image: NetworkImage(
-              'https://image.tmdb.org/t/p/original/sxeZgvv6mLZeGQMK1rvK3hw2W07.jpg'),
+          image: NetworkImage(imgString),
         ),
       ),
     );

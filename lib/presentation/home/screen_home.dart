@@ -27,25 +27,28 @@ class ScreenHome extends StatelessWidget {
             },
             child: Stack(
               children: [
-                ListView(
-                  children: [
-                    BackgroundCard(),
-                    MainTitleCard(
-                      title: "Release in the past year",
-                    ),
-                    MainTitleCard(
-                      title: "Trending Now",
-                    ),
-                    khight,
-                    NumberTitleCard(),
-                    MainTitleCard(
-                      title: "Tense Dramas",
-                    ),
-                    khight,
-                    MainTitleCard(
-                      title: "South Indian Cinema",
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: ListView(
+                    children: [
+                      BackgroundCard(),
+                      Release(
+                        title: "Release in the past year",
+                      ),
+                      Trending(
+                        title: "Trending Now",
+                      ),
+                      khight,
+                      NumberTitleCard(),
+                      TenseDrama(
+                        title: "Tense Dramas",
+                      ),
+                      khight,
+                      OnAir(
+                        title: "Upcoming",
+                      ),
+                    ],
+                  ),
                 ),
                 scrollNotifier.value == true
                     ? AnimatedContainer(
@@ -111,7 +114,7 @@ class NumberTitleCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        MainTitle(
+        const MainTitle(
           title: "Top 10 Tv Shows in India today",
         ),
         khight,
