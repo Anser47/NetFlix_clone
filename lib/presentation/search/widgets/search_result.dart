@@ -11,20 +11,25 @@ class SearchResultWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SearchTextTitile(title: 'Movies & TV'),
-        khight,
+        khight20,
         Expanded(
-          child: GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            mainAxisSpacing: 8,
-            crossAxisSpacing: 8,
-            childAspectRatio: 1.2 / 1.4,
-            children: List.generate(
-              20,
-              (index) => MainCard(),
-            ),
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+                mainAxisExtent: 220,
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8),
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    image: DecorationImage(
+                        image: NetworkImage(imageUrl), fit: BoxFit.cover)),
+              );
+            },
           ),
         )
       ],

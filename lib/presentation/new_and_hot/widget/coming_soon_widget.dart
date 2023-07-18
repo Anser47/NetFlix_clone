@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_app/api/upcommming/func.dart';
 import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/core/constants.dart';
 import 'package:netflix_app/domain/downloads/common_function.dart';
-
 import 'package:netflix_app/presentation/home/widget/custom_button_widget.dart';
-
-import '../../../core/Strings.dart';
 import '../../widgets/video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
@@ -60,16 +56,16 @@ class ComingSoonWidget extends StatelessWidget {
                       Expanded(
                         child: Text(
                           '${snapshot.data?[index].title}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 30,
                               letterSpacing: -1,
                               overflow: TextOverflow.ellipsis),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 30,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CustomButton(

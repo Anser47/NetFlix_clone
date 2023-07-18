@@ -13,15 +13,16 @@ class ScreenDownload extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: PreferredSize(
-            child: AppBarWidget(
-              title: "Downloads",
-            ),
-            preferredSize: Size.fromHeight(50)),
+        appBar: const PreferredSize(
+          child: AppBarWidget(
+            title: "Downloads",
+          ),
+          preferredSize: Size.fromHeight(50),
+        ),
         body: ListView.separated(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             itemBuilder: (context, index) => _widgetList[index],
-            separatorBuilder: (context, index) => SizedBox(
+            separatorBuilder: (context, index) => const SizedBox(
                   height: 20,
                 ),
             itemCount: _widgetList.length),
@@ -43,7 +44,7 @@ class Section2 extends StatelessWidget {
     return Column(
       children: [
         khight,
-        Text(
+        const Text(
           "Introducing Downloads for you",
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -60,7 +61,7 @@ class Section2 extends StatelessWidget {
             fontSize: 16,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         SizedBox(
@@ -81,21 +82,21 @@ class Section2 extends StatelessWidget {
                   DownloadsImageWidget(
                     imageList:
                         'https://image.tmdb.org/t/p/w200${snapshot.data?[1].posterPath}',
-                    margin: EdgeInsets.only(left: 180, top: 50),
+                    margin: const EdgeInsets.only(left: 180, top: 50),
                     angle: 28,
                     size: Size(size.width * 0.35, size.width * 0.55),
                   ),
                   DownloadsImageWidget(
                     imageList:
                         'https://image.tmdb.org/t/p/w200${snapshot.data?[2].posterPath}',
-                    margin: EdgeInsets.only(right: 170, top: 50),
+                    margin: const EdgeInsets.only(right: 170, top: 50),
                     angle: -25,
                     size: Size(size.width * 0.4, size.width * 0.6),
                   ),
                   DownloadsImageWidget(
                     imageList:
-                        'https://image.tmdb.org/t/p/w200${snapshot.data?[3].posterPath}',
-                    margin: EdgeInsets.only(bottom: 10, top: 40),
+                        'https://image.tmdb.org/t/p/w200${snapshot.data?[4].posterPath}',
+                    margin: const EdgeInsets.only(bottom: 10, top: 40),
                     size: Size(size.width * 0.5, size.width * 0.65),
                   ),
                 ],
@@ -115,7 +116,7 @@ class Section3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 50,
         ),
         SizedBox(
@@ -126,8 +127,8 @@ class Section3 extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(vertical: 10),
               child: Text(
                 "Set up",
                 style: TextStyle(
@@ -145,8 +146,8 @@ class Section3 extends StatelessWidget {
           ),
           color: kwhiteColor,
           onPressed: () {},
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(vertical: 10),
             child: Text(
               "See what you can download",
               style: TextStyle(
