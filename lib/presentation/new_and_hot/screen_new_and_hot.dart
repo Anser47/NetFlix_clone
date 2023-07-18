@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/core/constants.dart';
-import 'package:netflix_app/presentation/home/widget/custom_button_widget.dart';
 import 'package:netflix_app/presentation/new_and_hot/widget/coming_soon_widget.dart';
-import 'package:netflix_app/presentation/widgets/video_widget.dart';
-
 import 'widget/everyones_watching_widget.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
@@ -24,7 +21,7 @@ class ScreenNewAndHot extends StatelessWidget {
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900),
               ),
               actions: [
-                Icon(
+                const Icon(
                   Icons.cast,
                   color: Colors.white,
                   size: 30,
@@ -70,13 +67,14 @@ class ScreenNewAndHot extends StatelessWidget {
 Widget _buildEveryonesWatching() {
   return ListView.builder(
     itemCount: 10,
-    itemBuilder: (context, index) => EveryonesWatchingWidget(),
+    itemBuilder: (context, index) => EveryonesWatchingWidget(index: index),
   );
 }
 
 Widget _buildComingSoon() {
   return ListView.builder(
     itemCount: 10,
-    itemBuilder: (BuildContext context, index) => const ComingSoonWidget(),
+    itemBuilder: (BuildContext context, index) =>
+        ComingSoonWidget(index: index),
   );
 }

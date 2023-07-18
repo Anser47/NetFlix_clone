@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/core/constants.dart';
+import 'package:netflix_app/domain/downloads/common_function.dart';
 import 'package:netflix_app/presentation/widgets/app_bar_widget.dart';
 
 class ScreenDownload extends StatelessWidget {
@@ -65,33 +66,41 @@ class Section2 extends StatelessWidget {
         SizedBox(
           width: size.width,
           height: size.width,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Center(
-                child: CircleAvatar(
-                  backgroundColor: Colors.grey.withOpacity(0.5),
-                  radius: size.width * 0.4,
-                ),
-              ),
-              DownloadsImageWidget(
-                imageList: imageList[0],
-                margin: EdgeInsets.only(left: 180, top: 50),
-                angle: 28,
-                size: Size(size.width * 0.35, size.width * 0.55),
-              ),
-              DownloadsImageWidget(
-                imageList: imageList[1],
-                margin: EdgeInsets.only(right: 170, top: 50),
-                angle: -25,
-                size: Size(size.width * 0.4, size.width * 0.6),
-              ),
-              DownloadsImageWidget(
-                imageList: imageList[2],
-                margin: EdgeInsets.only(bottom: 10, top: 40),
-                size: Size(size.width * 0.5, size.width * 0.65),
-              ),
-            ],
+          child: FutureBuilder(
+            future: getRelese(),
+            builder: (context, snapshot) {
+              return Stack(
+                alignment: Alignment.center,
+                children: [
+                  Center(
+                    child: CircleAvatar(
+                      backgroundColor: Colors.grey.withOpacity(0.5),
+                      radius: size.width * 0.4,
+                    ),
+                  ),
+                  DownloadsImageWidget(
+                    imageList:
+                        'https://image.tmdb.org/t/p/w200${snapshot.data?[1].posterPath}',
+                    margin: EdgeInsets.only(left: 180, top: 50),
+                    angle: 28,
+                    size: Size(size.width * 0.35, size.width * 0.55),
+                  ),
+                  DownloadsImageWidget(
+                    imageList:
+                        'https://image.tmdb.org/t/p/w200${snapshot.data?[2].posterPath}',
+                    margin: EdgeInsets.only(right: 170, top: 50),
+                    angle: -25,
+                    size: Size(size.width * 0.4, size.width * 0.6),
+                  ),
+                  DownloadsImageWidget(
+                    imageList:
+                        'https://image.tmdb.org/t/p/w200${snapshot.data?[3].posterPath}',
+                    margin: EdgeInsets.only(bottom: 10, top: 40),
+                    size: Size(size.width * 0.5, size.width * 0.65),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ],

@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_app/api/upcommming/func.dart';
 import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/core/constants.dart';
+import 'package:netflix_app/domain/downloads/common_function.dart';
 
 import 'package:netflix_app/presentation/home/widget/custom_button_widget.dart';
 
+import '../../../core/Strings.dart';
 import '../../widgets/video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final int index;
   const ComingSoonWidget({
+    required this.index,
     super.key,
   });
 
@@ -39,64 +44,70 @@ class ComingSoonWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
-          width: size.width - 50,
-          height: 450,
-          child: const Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              VideoWidget(),
-              khight,
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        FutureBuilder(
+          future: getRelese(),
+          builder: (context, snapshot) {
+            return SizedBox(
+              width: size.width - 50,
+              height: 450,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "TALL GIRL 2",
-                    style: TextStyle(
-                      fontSize: 35, letterSpacing: -4,
-                      // fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 30,
-                  ),
+                  VideoWidget(index: index),
+                  khight,
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomButton(
-                        icon: Icons.notifications,
-                        title: "Remaind me",
-                        iconSize: 25,
-                        textSize: 12,
+                      Expanded(
+                        child: Text(
+                          '${snapshot.data?[index].title}',
+                          style: TextStyle(
+                              fontSize: 30,
+                              letterSpacing: -1,
+                              overflow: TextOverflow.ellipsis),
+                        ),
                       ),
                       SizedBox(
-                        width: 50,
+                        width: 30,
                       ),
-                      CustomButton(
-                        icon: Icons.info,
-                        title: "Info",
-                        iconSize: 25,
-                        textSize: 12,
-                      ),
-                      kwidth,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomButton(
+                            icon: Icons.notifications,
+                            title: "Remaind me",
+                            iconSize: 25,
+                            textSize: 12,
+                          ),
+                          SizedBox(
+                            width: 50,
+                          ),
+                          CustomButton(
+                            icon: Icons.info,
+                            title: "Info",
+                            iconSize: 25,
+                            textSize: 12,
+                          ),
+                          kwidth,
+                        ],
+                      )
                     ],
-                  )
+                  ),
+                  khight,
+                  const Text("Coming on friday"),
+                  khight,
+                  const Text(
+                    "Tall Girl 2",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  khight,
+                  const Text(
+                    "Landing the lead in the school musical is a dream come true for Jodi, until the pressiere sends her confidence - and her relationship - into a tailspain ",
+                    style: TextStyle(color: kgray),
+                  ),
                 ],
               ),
-              khight,
-              const Text("Coming on friday"),
-              khight,
-              const Text(
-                "Tall Girl 2",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              khight,
-              const Text(
-                "Landing the lead in the school musical is a dream come true for Jodi, until the pressiere sends her confidence - and her relationship - into a tailspain ",
-                style: TextStyle(color: kgray),
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ],
     );

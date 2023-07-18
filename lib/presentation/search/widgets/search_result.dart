@@ -21,7 +21,10 @@ class SearchResultWidget extends StatelessWidget {
             mainAxisSpacing: 8,
             crossAxisSpacing: 8,
             childAspectRatio: 1.2 / 1.4,
-            children: List.generate(20, (index) => MainCard()),
+            children: List.generate(
+              20,
+              (index) => MainCard(),
+            ),
           ),
         )
       ],

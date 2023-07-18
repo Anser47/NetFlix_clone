@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:netflix_app/presentation/home/widget/background_card.dart';
 import 'package:netflix_app/presentation/home/widget/number_card.dart';
+import 'package:netflix_app/presentation/home/widget/number_title_card.dart';
 import 'package:netflix_app/presentation/widgets/main_title_card.dart';
 import '../../core/constants.dart';
 import '../widgets/main_title.dart';
@@ -39,7 +40,8 @@ class ScreenHome extends StatelessWidget {
                         title: "Trending Now",
                       ),
                       khight,
-                      NumberTitleCard(),
+                      NumberCard(),
+                      //NumberTitleCard(),
                       TenseDrama(
                         title: "Tense Dramas",
                       ),
@@ -124,7 +126,7 @@ class NumberTitleCard extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             children: List.generate(
               10,
-              (index) => NumberCard(
+              (index) => NumberCardd(
                 index: index,
               ),
             ),

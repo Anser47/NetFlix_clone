@@ -75,7 +75,7 @@ Future<List<Result>> getTenseDrama() async {
 Future<List<Result>> getOnAir() async {
   final response = await http.get(
     Uri.parse(
-        'https://api.themoviedb.org/3/movie/upcoming?api_key=2bba544d23346ba3733ccc5ba4a1d3c8'),
+        'https://api.themoviedb.org/3/tv/top_rated?api_key=2bba544d23346ba3733ccc5ba4a1d3c8'),
   );
   if (response.statusCode == 200) {
     final jsonData = jsonDecode(response.body);

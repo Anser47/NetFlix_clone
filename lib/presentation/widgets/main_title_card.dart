@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_app/core/Strings.dart';
 import 'package:netflix_app/domain/downloads/common_function.dart';
 
 import '../../core/constants.dart';
@@ -132,8 +133,7 @@ class TenseDrama extends StatelessWidget {
                 children: List.generate(
                   10,
                   (index) => MainCard2(
-                    imgString:
-                        'https://image.tmdb.org/t/p/w200${snapshot.data?[index].posterPath}',
+                    imgString: '$imageUrl${snapshot.data?[index].posterPath}',
                   ),
                 ),
               );

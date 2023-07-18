@@ -47,6 +47,7 @@ class TopSearchItemTile extends StatelessWidget {
             ),
           ),
         ),
+        kwidth,
         Expanded(
           child: Text(
             'Movie Name',
@@ -58,8 +59,8 @@ class TopSearchItemTile extends StatelessWidget {
           backgroundColor: kwhiteColor,
           radius: 23,
           child: Icon(
-            CupertinoIcons.play_fill,
-            color: kwhiteColor,
+            CupertinoIcons.play_circle_fill,
+            color: backgroundColor,
           ),
         )
       ],
