@@ -6,8 +6,10 @@ import 'package:http/http.dart' as http;
 import '../model/common_model/common_model.dart';
 
 Future<List<Result>> getRelese() async {
-  final response = await http.get(Uri.parse(
-      'https://api.themoviedb.org/3/movie/now_playing?api_key=2bba544d23346ba3733ccc5ba4a1d3c8'));
+  final response = await http.get(
+    Uri.parse(
+        'https://api.themoviedb.org/3/movie/now_playing?api_key=2bba544d23346ba3733ccc5ba4a1d3c8'),
+  );
   if (response.statusCode == 200) {
     final jsonData = jsonDecode(response.body);
     final result = CommonModel.fromJson(jsonData);
@@ -20,7 +22,6 @@ Future<List<Result>> getRelese() async {
   return empty;
 }
 
-// https://api.themoviedb.org/3/movie/popular?api_key=2bba544d23346ba3733ccc5ba4a1d3c8
 Future<List<Result>> getTrending() async {
   final response = await http.get(
     Uri.parse(

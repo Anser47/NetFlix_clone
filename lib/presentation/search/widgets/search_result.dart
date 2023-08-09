@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:netflix_app/core/constants.dart';
+import 'package:netflix_app/domain/downloads/common_function.dart';
 import 'package:netflix_app/presentation/search/widgets/title.dart';
 
 const imageUrl =
     "https://sm.ign.com/t/ign_latam/movie/t/the-dark-k/the-dark-knight_36qc.1200.jpg";
+// const imageUrl2 =
+//     "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg";
 
 class SearchResultWidget extends StatelessWidget {
   const SearchResultWidget({super.key});
@@ -15,23 +18,32 @@ class SearchResultWidget extends StatelessWidget {
       children: [
         SearchTextTitile(title: 'Movies & TV'),
         khight20,
-        Expanded(
-          child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                mainAxisExtent: 220,
-                mainAxisSpacing: 8,
-                crossAxisSpacing: 8),
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
-                    image: DecorationImage(
-                        image: NetworkImage(imageUrl), fit: BoxFit.cover)),
-              );
-            },
-          ),
-        )
+        FutureBuilder(
+          future: getRelese(),
+          builder: (context, snapshot) {
+            return Expanded(
+              child: GridView.builder(
+                itemCount: 12,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    mainAxisExtent: 220,
+                    mainAxisSpacing: 8,
+                    crossAxisSpacing: 8),
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                      image: DecorationImage(
+                          image: NetworkImage(
+                              'https://image.tmdb.org/t/p/w200${snapshot.data?[index].posterPath}'),
+                          fit: BoxFit.cover),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        ),
       ],
     );
   }
@@ -42,13 +54,18 @@ class MainCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: NetworkImage(imageUrl),
-        ),
-        borderRadius: BorderRadius.circular(7),
-      ),
+    return FutureBuilder(
+      future: getTrending(),
+      builder: (context, snapshot) {
+        return Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(imageUrl),
+            ),
+            borderRadius: BorderRadius.circular(7),
+          ),
+        );
+      },
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/core/constants.dart';
+import 'package:netflix_app/domain/downloads/common_function.dart';
 import 'package:netflix_app/presentation/search/widgets/title.dart';
 
 const imageUrl =
@@ -20,7 +21,7 @@ class SearchIdleWidget extends StatelessWidget {
         Expanded(
           child: ListView.separated(
               shrinkWrap: true,
-              itemBuilder: (context, index) => const TopSearchItemTile(),
+              itemBuilder: (context, index) => TopSearchItemTile(index: index),
               separatorBuilder: (context, index) => khight20,
               itemCount: 10),
         )
@@ -30,40 +31,49 @@ class SearchIdleWidget extends StatelessWidget {
 }
 
 class TopSearchItemTile extends StatelessWidget {
-  const TopSearchItemTile({super.key});
+  final int index;
+  const TopSearchItemTile({required this.index, super.key});
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    return Row(
-      children: [
-        Container(
-          height: 65,
-          width: screenWidth * 0.35,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(imageUrl),
+    return FutureBuilder(
+      future: getTrending(),
+      builder: (context, snapshot) {
+        return Row(
+          children: [
+            Container(
+              height: 65,
+              width: screenWidth * 0.35,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      'https://image.tmdb.org/t/p/w200${snapshot.data?[index].backdropPath}'),
+                ),
+              ),
             ),
-          ),
-        ),
-        kwidth,
-        Expanded(
-          child: Text(
-            'Movie Name',
-            style: TextStyle(
-                color: kwhiteColor, fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-        ),
-        CircleAvatar(
-          backgroundColor: kwhiteColor,
-          radius: 23,
-          child: Icon(
-            CupertinoIcons.play_circle_fill,
-            color: backgroundColor,
-          ),
-        )
-      ],
+            kwidth,
+            Expanded(
+              child: Text(
+                '${snapshot.data?[index].title}',
+                style: const TextStyle(
+                    color: kwhiteColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16),
+              ),
+            ),
+            const CircleAvatar(
+              backgroundColor: kwhiteColor,
+              radius: 23,
+              child: Icon(
+                CupertinoIcons.play_circle_fill,
+                color: backgroundColor,
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }

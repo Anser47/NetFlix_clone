@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:netflix_app/core/colors/colors.dart';
 import 'package:netflix_app/core/constants.dart';
@@ -33,11 +32,11 @@ class ScreenDownload extends StatelessWidget {
 
 class Section2 extends StatelessWidget {
   Section2({super.key});
-  List<String> imageList = [
-    'https://sm.ign.com/t/ign_latam/movie/t/the-dark-k/the-dark-knight_36qc.1200.jpg',
-    'https://i.pinimg.com/originals/8a/84/8b/8a848b9f2b7fb580193da613c4a16819.jpg',
-    'https://image.tmdb.org/t/p/original/aOIuZAjPaRIE6CMzbazvcHuHXDc.jpg'
-  ];
+  // List<String> imageList = [
+  //   'https://sm.ign.com/t/ign_latam/movie/t/the-dark-k/the-dark-knight_36qc.1200.jpg',
+  //   'https://i.pinimg.com/originals/8a/84/8b/8a848b9f2b7fb580193da613c4a16819.jpg',
+  //   'https://image.tmdb.org/t/p/original/aOIuZAjPaRIE6CMzbazvcHuHXDc.jpg'
+  // ];
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;

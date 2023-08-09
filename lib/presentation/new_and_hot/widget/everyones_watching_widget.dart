@@ -37,7 +37,7 @@ class EveryonesWatchingWidget extends StatelessWidget {
                 style: const TextStyle(color: kgray),
               ),
             ),
-            khight50,
+            khight20,
             VideoWidget(index: index),
             khight,
             const Row(
@@ -63,6 +63,7 @@ class EveryonesWatchingWidget extends StatelessWidget {
                   iconSize: 27,
                   textSize: 12,
                 ),
+                khight50,
                 kwidth,
               ],
             )
